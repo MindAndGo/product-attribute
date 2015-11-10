@@ -22,7 +22,7 @@
 
 {
     "name": "Product GTIN EAN8 EAN13 UPC JPC Support",
-    "version": "8.0.1.1.0",
+    "version": "9.0.1.1.0",
     "author": "ChriCar Beteiligungs- und Beratungs- GmbH,"
               "Odoo Community Association (OCA)",
     "website": "http://www.chricar.at/ChriCar",
@@ -38,5 +38,5 @@ with the same technical name that accepts EAN13, EAN8, JPC, UPC and GTIN.
     """,
     "demo": [],
     "data": ['product_view.xml'],
-    'installable': False,
+    'installable': True,
 }
