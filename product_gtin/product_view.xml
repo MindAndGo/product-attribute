@@ -7,7 +7,7 @@
     <field name="inherit_id" ref="product.product_template_search_view"/>
     <field name="arch" type="xml">
         <field name="name" position="attributes">
-            <attribute name="filter_domain">['|', '|', ('default_code','ilike',self),('name','ilike',self), ('ean13','ilike',self)]</attribute>
+            <attribute name="filter_domain">['|', '|', ('default_code','ilike',self),('name','ilike',self), ('barcode','ilike',self)]</attribute>
         </field>
     </field>
 </record>
@@ -17,7 +17,7 @@
     <field name="inherit_id" ref="product.product_search_form_view"/>
     <field name="arch" type="xml">
         <field name="name" position="attributes">
-            <attribute name="filter_domain">['|', '|', ('default_code','ilike',self),('name','ilike',self), ('ean13','ilike',self)]</attribute>
+            <attribute name="filter_domain">['|', '|', ('default_code','ilike',self),('name','ilike',self), ('barcode','ilike',self)]</attribute>
         </field>
     </field>
 </record>
