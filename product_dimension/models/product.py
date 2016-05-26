@@ -46,7 +46,7 @@ class Product(models.Model):
         help='UoM for length, height, width')
 
 
-class Product_template(models.Model):
+class ProductTemplate(models.Model):
 
     _inherit = 'product.template'
 
