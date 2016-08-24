@@ -120,8 +120,6 @@
             </field>
         </record>
 
-<<<<<<< HEAD:product_brand/views/product_brand_view.xml
-=======
 
         <record id="product_search_form_view" model="ir.ui.view">
             <field name="name">product.search.form</field>
@@ -135,7 +133,7 @@
             </field>
         </record>
 
->>>>>>> c6e253691795c3311a521c1858cc456a1e834700:product_brand/product_brand_view.xml
+
         <record id="view_product_template_search_brand" model="ir.ui.view">
             <field name="name">product.template.search.brand</field>
             <field name="model">product.template</field>
@@ -143,18 +141,16 @@
             <field name="arch" type="xml">
                 <field name="name" position="after">
                     <field name="product_brand_id"/>
-<<<<<<< HEAD:product_brand/views/product_brand_view.xml
+
                     <filter string="Brand" name="groupby_brand" domain="[]"
                             context="{'group_by' : 'product_brand_id'}"/>
                     <separator/>
-                </field>
-=======
                 </field>
                 <search position="inside">
                     <filter string="Brand" name="groupby_brand" domain="[]"
                         context="{'group_by' : 'product_brand_id'}"/>
                 </search>
->>>>>>> c6e253691795c3311a521c1858cc456a1e834700:product_brand/product_brand_view.xml
+
             </field>
         </record>
 
@@ -174,12 +170,9 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_kanban_view" />
             <field name="arch" type="xml">
-<<<<<<< HEAD:product_brand/views/product_brand_view.xml
-                <xpath expr="//div[@class='oe_kanban_details']/strong[1]" position="after">
-=======
-                
+
                 <xpath expr="//div[@class='oe_kanban_details']/strong" position="after">
->>>>>>> c6e253691795c3311a521c1858cc456a1e834700:product_brand/product_brand_view.xml
+
                     <div>
                         <a t-if="record.product_brand_id" type="action"
                            name="%(action_open_single_product_brand)d">
@@ -195,11 +188,9 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_kanban_view" />
             <field name="arch" type="xml">
-<<<<<<< HEAD:product_brand/views/product_brand_view.xml
+
                 <xpath expr="//div[@class='o_kanban_tags_section']" position="after">
-=======
-                <xpath expr="//div[@class='oe_kanban_details']/strong" position="after">
->>>>>>> c6e253691795c3311a521c1858cc456a1e834700:product_brand/product_brand_view.xml
+
                     <div>
                         <a t-if="record.product_brand_id" type="open">
                             <field name="product_brand_id"/>
@@ -242,12 +233,7 @@
             name="Product Brands"
             id="menu_product_brand"
             action="action_product_brand"
-<<<<<<< HEAD:product_brand/views/product_brand_view.xml
             parent="base.menu_product"/>
 
-=======
-            parent="base.menu_sales"
-            sequence="100"/>
->>>>>>> c6e253691795c3311a521c1858cc456a1e834700:product_brand/product_brand_view.xml
     </data>
 </openerp>
