@@ -22,8 +22,9 @@
 import logging
 _logger = logging.getLogger(__name__)
 
-from openerp.osv import orm, fields
+from openerp import models, fields, api, _
 import operator
+from openerp.exceptions import Warning, ValidationError
 
 
 CONSTRAINT_MESSAGE = 'Error: Invalid EAN/GTIN code'
@@ -150,55 +151,49 @@ def check_ean(eancode):
     return DICT_CHECK_EAN[len(eancode)](eancode)
 
 
-class product_product(orm.Model):
+class ProductProduct(models.Model):
     _inherit = "product.product"
 
-    def _check_ean_key(self, cr, uid, ids):
-        for rec in self.browse(cr, uid, ids):
-            if not check_ean(rec.ean13):
-                return False
-        return True
+    @api.one
+    @api.constrains("barcode")
+    def _check_ean_key(self):
+        _logger.debug('Barcode check in product.')
+        _logger.debug(self)
+        if not check_ean(self.barcode):
+            raise ValidationError(CONSTRAINT_MESSAGE)
 
-    _columns = {
-        'ean13': fields.char(
+#        return True
+
+    barcode = fields.Char(
             'EAN/GTIN', size=14,
-            help="Code for %s" % HELP_MESSAGE),
-    }
+            help="Code for %s" % HELP_MESSAGE)
+        
 
-    _constraints = [(_check_ean_key, CONSTRAINT_MESSAGE, ['ean13'])]
-
-
-class product_packaging(orm.Model):
+class ProductPackaging(models.Model):
     _inherit = "product.packaging"
 
-    def _check_ean_key(self, cr, uid, ids):
-        for rec in self.browse(cr, uid, ids):
-            if not check_ean(rec.ean):
-                return False
-        return True
+    
+    @api.one
+    @api.constrains("barcode")
+    def _check_ean_key(self):
+        if not check_ean(self.barcode):
+                raise ValidationError(CONSTRAINT_MESSAGE)
+            
+            
+    barcode = fields.Char(
+            'EAN/GTIN', size=14,
+            help="Code for %s" % HELP_MESSAGE)
+    
 
-    _columns = {
-        'ean': fields.char(
-            'EAN', size=14,
-            help='Barcode number for %s' % HELP_MESSAGE),
-        }
-
-    _constraints = [(_check_ean_key, CONSTRAINT_MESSAGE, ['ean'])]
-
-
-class res_partner(orm.Model):
+class ResPartner(models.Model):
     _inherit = "res.partner"
-
-    def _check_ean_key(self, cr, uid, ids):
-        for rec in self.browse(cr, uid, ids):
-            if not check_ean(rec.ean13):
-                return False
-        return True
-
-    _columns = {
-        'ean13': fields.char(
-            'EAN', size=14,
-            help="Code for %s" % HELP_MESSAGE),
-        }
-
-    _constraints = [(_check_ean_key, CONSTRAINT_MESSAGE, ['ean13'])]
+    
+    @api.one
+    @api.constrains("barcode")
+    def _check_ean_key(self):
+        if not check_ean(self.barcode):
+            raise ValidationError(CONSTRAINT_MESSAGE)
+    
+    barcode = fields.Char(
+            'EAN/GTIN', size=14,
+            help="Code for %s" % HELP_MESSAGE)
