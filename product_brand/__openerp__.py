@@ -8,11 +8,7 @@
 
 {
     'name': 'Product Brand Manager',
-<<<<<<< HEAD
     'version': '9.0.1.0.0',
-=======
-    'version': '9.0.0.1.1',
->>>>>>> c6e253691795c3311a521c1858cc456a1e834700
     'category': 'Product',
     'summary': "Product Brand Manager",
     'author': 'NetAndCo, Akretion, Prisnet Telecommunications SA'
@@ -25,8 +21,5 @@
         'security/ir.model.access.csv'
     ],
     'installable': True,
-<<<<<<< HEAD
     'auto_install': False
-=======
->>>>>>> c6e253691795c3311a521c1858cc456a1e834700
 }
